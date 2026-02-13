@@ -1,3 +1,4 @@
+import { Card, Button, CardBody, CardText, CardTitle } from 'react-bootstrap';
 import { connectDB } from "@/util/database"
 import { MongoClient } from "mongodb"
 
@@ -28,15 +29,24 @@ async function getProducts() {
 }
 
 export default async function List() {
-    // const client = await connectDB;
-    // const db = client.db("yes24_db")
-    // let result = await db.collection('music_albums').find().toArray()
     const products = await getProducts();
-    console.log('000000000000000')
     console.log(products)
     return (
         <div>
-            <h4>상품목록</h4>
+            <h4>상품목록</h4>{
+                products.map((album, i) => (
+                    <Card style={{ width: '18rem' }} key={i}>
+                        <img src={album.image_url} alt={album.title} className="img-fluid" />
+                        <CardBody>
+                            <CardTitle>{album.title}</CardTitle>
+                            <CardText>
+                                {album.price}원
+                            </CardText>
+                            <Button variant="primary">구매</Button>
+                        </CardBody>
+                    </Card>
+                ))
+            }
         </div>
     )
 }
