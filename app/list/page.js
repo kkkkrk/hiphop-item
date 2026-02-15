@@ -1,6 +1,7 @@
 import { Card, Button, CardBody, CardText, CardTitle } from 'react-bootstrap';
 import { connectDB } from "@/util/database"
 import { MongoClient } from "mongodb"
+import Link from 'next/link';
 
 export const revalidate = 3600;
 
@@ -30,15 +31,18 @@ async function getProducts() {
 
 export default async function List() {
     const products = await getProducts();
-    console.log(products)
     return (
         <div>
             <h4>상품목록</h4>{
-                products.map((album, i) => (
+                products.map((album, i) => (//detail페이지로 링크 걸어야 함
                     <Card style={{ width: '18rem' }} key={i}>
-                        <img src={album.image_url} alt={album.title} className="img-fluid" />
+                        <Link href={'/detail/' + album._id}>
+                            <img src={album.image_url} alt={album.title} className="img-fluid" />
+                        </Link>
                         <CardBody>
-                            <CardTitle>{album.title}</CardTitle>
+                            <Link href={'/detail/' + album._id} >
+                                <CardTitle>{album.title}</CardTitle>
+                            </Link>
                             <CardText>
                                 {album.price}원
                             </CardText>
