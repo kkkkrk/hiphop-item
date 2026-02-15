@@ -1,6 +1,7 @@
 'use client';
 
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { ShoppingCart, CircleUserRound } from 'lucide-react';
 
 export default function MyNavbar() {
     return (
@@ -13,6 +14,8 @@ export default function MyNavbar() {
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="list">앨범목록</Nav.Link>
                     </Nav>
+                    <Nav.Link href="/cart" className='mx-2'><ShoppingCart /></Nav.Link>
+                    <Nav.Link href="/cart" className='mx-2'><CircleUserRound /></Nav.Link>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
