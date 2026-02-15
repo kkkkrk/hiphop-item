@@ -15,7 +15,7 @@ export default function MyNavbar() {
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="list">앨범목록</Nav.Link>
                     </Nav>
-                    <button onClick={() => { signIn() }}>로그인</button>
+                    <button onClick={() => { signIn('github') }}>로그인</button>
                     <Nav.Link href="/cart" className='mx-2'>회원가입</Nav.Link>
                     <Nav.Link href="/cart" className='mx-2'><CircleUserRound /></Nav.Link>
                     <Nav.Link href="/cart" className='mx-2' ><ShoppingCart /></Nav.Link>
