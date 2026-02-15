@@ -2,11 +2,13 @@
 
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import Link from 'next/link';
+// import { signIn } from 'next-auth/react'
 
 export default function HotArtist() {
     return (
         <>
             <h4>이번주 핫한 아티스트</h4>
+            {/* <button onClick={() => { signIn() }}>로그인</button> */}
             <Card style={{ width: '40rem' }}>
                 <Row className="g-0">
                     <Col md={4}>

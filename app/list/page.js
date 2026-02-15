@@ -33,7 +33,7 @@ export default async function List() {
     const products = await getProducts();
     return (
         <div>
-            <h4>상품목록</h4>{
+            {/* <h4>상품목록</h4>{
                 products.map((album, i) => (//detail페이지로 링크 걸어야 함
                     <Card style={{ width: '18rem' }} key={i}>
                         <Link href={'/detail/' + album._id}>
@@ -50,7 +50,30 @@ export default async function List() {
                         </CardBody>
                     </Card>
                 ))
-            }
+            } */}
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(18rem, 1fr))',
+                gap: '20px',
+                padding: '20px'
+            }}>
+                {products.map((album, i) => (
+                    <Card key={i}>
+                        <Link href={'/detail/' + album._id}>
+                            <img src={album.image_url} alt={album.title} className="img-fluid" />
+                        </Link>
+                        <CardBody>
+                            <Link href={'/detail/' + album._id} >
+                                <CardTitle>{album.title}</CardTitle>
+                            </Link>
+                            <CardText>
+                                {album.price}원
+                            </CardText>
+                            <Button variant="primary">구매</Button>
+                        </CardBody>
+                    </Card>
+                ))}
+            </div>
         </div>
     )
 }
